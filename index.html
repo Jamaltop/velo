@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0" />
+  <meta name="theme-color" content="#f7f5f0" />
+  <title>VELO — Industrial Objects & Minimalist Living</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,600&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <!-- Header -->
+  <header class="site-header" id="siteHeader">
+    <div class="header-inner">
+      <div class="header-brand-wrap">
+        <a href="#" class="logo">VELO<span>®</span></a>
+        <span class="brand-tagline">Bauhaus Edition</span>
+      </div>
+
+      <nav class="cat-nav" id="categoryNav" aria-label="Product categories">
+        <button class="cat-btn active" data-cat="all">All Objects</button>
+        <button class="cat-btn" data-cat="Lighting">Lighting</button>
+        <button class="cat-btn" data-cat="Audio">Audio</button>
+        <button class="cat-btn" data-cat="Workspace">Workspace</button>
+      </nav>
+
+      <div class="header-actions">
+        <a href="https://github.com" target="_blank" rel="noopener" class="nav-portfolio" title="Developer Portfolio">
+          <span>Portfolio</span>
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="7" y1="17" x2="17" y2="7"></line><polyline points="7 7 17 7 17 17"></polyline></svg>
+        </a>
+
+        <button class="action-btn" id="openWishlistBtn" aria-label="View saved objects" title="Saved Objects">
+          <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path>
+          </svg>
+          <span class="action-label">Saved</span>
+          <span class="action-badge" id="wishCount">0</span>
+        </button>
+
+        <button class="action-btn cart-trigger" id="openCartBtn" aria-label="Open acquisition bag" title="Shopping Bag">
+          <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"></path>
+            <line x1="3" y1="6" x2="21" y2="6"></line>
+            <path d="M16 10a4 4 0 0 1-8 0"></path>
+          </svg>
+          <span class="action-label">Bag</span>
+          <span class="action-badge" id="cartCount">0</span>
+        </button>
+      </div>
+    </div>
+
+    <!-- Mobile category slider (visible on tablets/mobiles) -->
+    <div class="mobile-cat-bar" aria-label="Mobile categories">
+      <div class="mobile-cat-scroll" id="mobileCategoryScroll">
+        <button class="mobile-cat-pill active" data-cat="all">All Objects</button>
+        <button class="mobile-cat-pill" data-cat="Lighting">Lighting</button>
+        <button class="mobile-cat-pill" data-cat="Audio">Audio</button>
+        <button class="mobile-cat-pill" data-cat="Workspace">Workspace</button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Editorial Hero -->
+  <section class="editorial-hero">
+    <div class="hero-copy">
+      <span class="eyebrow">
+        <span class="eyebrow-dot"></span>
+        COLLECTION 04 — BAUHAUS ARCHIVE
+      </span>
+      <h1>Form stripped to quiet permanence.</h1>
+      <p>Precision-milled aluminum, borosilicate glass, and acoustic textiles engineered for tactile longevity and aesthetic equilibrium.</p>
+    </div>
+
+    <div class="hero-controls">
+      <div class="search-input-wrap">
+        <svg class="search-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <circle cx="11" cy="11" r="8"></circle>
+          <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+        </svg>
+        <input type="search" id="searchInput" placeholder="Search objects or materials..." aria-label="Search products" />
+        <button class="clear-search-btn" id="clearSearchBtn" aria-label="Clear search">✕</button>
+      </div>
+
+      <div class="select-wrap">
+        <select id="sortSelect" aria-label="Sort products">
+          <option value="featured">Sort: Curated Index</option>
+          <option value="asc">Price: Low to High</option>
+          <option value="desc">Price: High to Low</option>
+        </select>
+        <svg class="select-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <polyline points="6 9 12 15 18 9"></polyline>
+        </svg>
+      </div>
+    </div>
+  </section>
+
+  <!-- Catalog Meta Bar -->
+  <div class="catalog-status-bar">
+    <div class="status-inner">
+      <span class="results-count" id="resultsCount">Displaying all curated objects</span>
+      <span class="shipping-pill">
+        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="1" y="3" width="15" height="13"></rect><polygon points="16 8 20 8 23 11 23 16 16 16 16 8"></polygon><circle cx="5.5" cy="18.5" r="2.5"></circle><circle cx="18.5" cy="18.5" r="2.5"></circle></svg>
+        Complimentary dispatch worldwide over $300
+      </span>
+    </div>
+  </div>
+
+  <!-- Main Catalog -->
+  <main class="catalog-container">
+    <div class="product-grid" id="productGrid"></div>
+  </main>
+
+  <!-- Site Footer -->
+  <footer class="site-footer">
+    <div class="footer-grid">
+      <div class="footer-brand-col">
+        <div class="logo">VELO<span>®</span></div>
+        <p class="footer-note">Architectural instruments and ambient objects dispatched globally from Baku &amp; Copenhagen studios.</p>
+        <div class="footer-badges">
+          <span class="micro-badge">ISO 9001 Milled</span>
+          <span class="micro-badge">Carbon Balanced</span>
+          <span class="micro-badge">5-Year Guarantee</span>
+        </div>
+      </div>
+      <div class="footer-credit">
+        <div class="promo-callout">
+          <span class="promo-label">SPECIAL OFFER</span>
+          <p>Use code <strong class="code-tag">VELO15</strong> at checkout for 15% off first acquisition.</p>
+        </div>
+        <p class="dev-sign">Designed &amp; Developed with precision by <a href="#" target="_blank" rel="noopener">Jamal Aliyev</a></p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Product Detail Modal -->
+  <div class="modal-overlay" id="detailModal" aria-hidden="true">
+    <div class="detail-dialog" role="dialog" aria-modal="true" aria-labelledby="detailTitle">
+      <button class="close-dialog" id="closeDetailBtn" aria-label="Close modal">
+        <span>Close</span>
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+      </button>
+      <div id="detailBody" class="detail-layout"></div>
+    </div>
+  </div>
+
+  <!-- Cart Drawer -->
+  <aside class="drawer-overlay" id="cartDrawer" aria-hidden="true">
+    <div class="drawer-panel" role="dialog" aria-modal="true" aria-labelledby="cartHeading">
+      <div class="drawer-head">
+        <div>
+          <h2 id="cartHeading">Acquisition Bag</h2>
+          <span class="drawer-subtitle" id="drawerCartCount">0 items</span>
+        </div>
+        <button class="close-dialog" id="closeCartBtn" aria-label="Close bag">
+          <span>Close</span>
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+        </button>
+      </div>
+
+      <!-- Free shipping progress bar -->
+      <div class="shipping-bar-wrap">
+        <div class="shipping-bar-text" id="shippingBarText">Add $300 for complimentary express courier</div>
+        <div class="shipping-bar-track">
+          <div class="shipping-bar-progress" id="shippingBarProgress" style="width: 0%;"></div>
+        </div>
+      </div>
+
+      <div class="drawer-items" id="cartItemsContainer"></div>
+
+      <div class="drawer-foot">
+        <form id="promoForm" class="promo-row">
+          <input type="text" id="promoInput" placeholder="Promo code (VELO15)" autocomplete="off" />
+          <button type="submit">Apply</button>
+        </form>
+        <p class="promo-msg" id="promoMsg"></p>
+
+        <div class="totals-list">
+          <div class="total-row"><span>Subtotal</span><span id="subtotalVal">$0</span></div>
+          <div class="total-row" id="discountRow" style="display:none;"><span id="discountTitle">Discount</span><span id="discountVal" class="discount-num">-$0</span></div>
+          <div class="total-row"><span>Estimated Dispatch</span><span id="shippingVal">Complimentary</span></div>
+          <div class="total-row grand"><span>Total (USD)</span><span id="totalVal">$0</span></div>
+        </div>
+
+        <button class="checkout-btn" id="proceedCheckoutBtn">
+          <span>Proceed to Checkout</span>
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+        </button>
+
+        <form id="checkoutForm" class="checkout-form hidden">
+          <div class="form-header">
+            <h3>Dispatch &amp; Delivery</h3>
+            <button type="button" class="cancel-form-btn" id="cancelCheckoutBtn">Back</button>
+          </div>
+          <input type="text" required placeholder="Full Name" autocomplete="name" />
+          <input type="email" required placeholder="Email for Receipt" autocomplete="email" />
+          <input type="text" required placeholder="Street Address, City &amp; Postal Code" autocomplete="street-address" />
+          <button type="submit" class="checkout-btn confirm-btn">
+            <span>Confirm Order Acquisition</span>
+          </button>
+        </form>
+      </div>
+    </div>
+  </aside>
+
+  <!-- Wishlist Modal -->
+  <div class="modal-overlay" id="wishlistModal" aria-hidden="true">
+    <div class="detail-dialog small-dialog" role="dialog" aria-modal="true" aria-labelledby="wishHeading">
+      <div class="drawer-head wish-modal-head">
+        <div>
+          <h2 id="wishHeading">Saved Objects</h2>
+          <span class="drawer-subtitle" id="wishlistSubhead">0 objects bookmarked</span>
+        </div>
+        <button class="close-dialog" id="closeWishBtn" aria-label="Close wishlist">
+          <span>Close</span>
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+        </button>
+      </div>
+      <div id="wishlistContainer" class="wish-list"></div>
+    </div>
+  </div>
+
+  <!-- Floating Toast Notifications -->
+  <div class="toast-container" id="toastContainer" aria-live="polite"></div>
+
+  <script src="script.js"></script>
+</body>
+</html>
